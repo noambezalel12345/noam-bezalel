@@ -2,6 +2,7 @@ package com.example.eggapplication;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
@@ -13,6 +14,19 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private int counter;
+    private Button btnGetOut;
+    //private void EvantHandler(){
+        //btnGetOut.setOnClickListener(new View.onClickListener()){
+        //public void onClick(View v){
+           // }
+        // }
+
+
+    @Override
+    public <T extends View> T findViewById(int id) {
+        return super.findViewById(id);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         counter = 10;
         TextView counterTextView = findViewById(R.id.textview_counter);
         counterTextView.setText(""+counter);
+        btnGetOut = (Button)findViewById(R.id.btnGETOUT);
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
