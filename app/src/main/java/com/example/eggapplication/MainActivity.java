@@ -1,5 +1,6 @@
 package com.example.eggapplication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +24,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void EvantHandler(){
 
-        btnGetOut.setOnClickListener(new View.onClickListener(){
+        btnGetOut.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View v){
+                Log.e(Tag, "new View.OnClickListener!!!!!");
                 AlertDialog.Builder Builder=new AlertDialog.Builder(MainActivity.this);
-                Builder.setMessage("Are you sure you wanna leave?")
-                        //////////////////
-            finish();
+                AlertDialog.Builder yes = Builder.setMessage("Are you sure you wanna leave?")
+                        .setCancelable(false)
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog Alert = Builder.create();
+                Alert.show();
             }
         });
     }
